@@ -1,0 +1,13 @@
+<%= content_tag :tr, id: "property-#{property.id}" do %>
+  <td><%= @property.name %></td>
+  <td><%= @property.address1 %></td>
+  <td><%= @property.address2 %></td>
+  <td><%= @property.address3 %></td>
+  <td><%= @property.country %></td>
+  <td><%= @property.city %></td>
+  <td><%= @property.state %></td>
+  <td><%= @property.zip %></td>
+  <td><%= @property.taxes %></td>
+  <td><%= @property.rent %></td>
+  <td><%= @property.notes %></td>
+<% end %>

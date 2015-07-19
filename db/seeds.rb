@@ -45,12 +45,35 @@ properties = Property.all
 end
 tenants = Tenant.all
 
-user = User.first
-user.skip_reconfirmation!
-user.update_attributes!(
-  email: 'nicoledelarosa616@gmail.com',
-  password: 'monkey324'
+# Create an admin user
+admin = User.new(
+  name: 'Admin User',
+  email: 'admin@example.com',
+  password: 'helloworld',
+  role: 'admin'
   )
+admin.skip_confirmation!
+admin.save!
+
+#Create a property manager
+property_manager = User.new(
+  name: 'Property Manager User',
+  email: 'nicoledelarosa616@gmail.com',
+  password: 'monkey324',
+  role: 'property_manager'
+  )
+property_manager.skip_confirmation!
+property_manager.save!
+
+# Create a tenant
+tenant = User.new(
+  name: 'Tenant User',
+  email: 'tenant@example.com',
+  password: 'helloworld',
+  role: 'tenant'
+  )
+tenant.skip_confirmation!
+tenant.save!
 
 puts "Seed finished"
 puts "#{User.count} users created"

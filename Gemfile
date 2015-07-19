@@ -32,8 +32,13 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # Add devise for user authentication
 gem 'devise'
+# Add pundit for authorization
+gem 'pundit'
 # Add figaro to store environment variables
 gem 'figaro', '1.0'
+
+# Add gem for active record session store
+gem 'activerecord-session_store'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 

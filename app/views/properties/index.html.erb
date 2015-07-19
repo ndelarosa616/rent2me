@@ -1,4 +1,9 @@
 <h1>All Properties</h1>
+
+<% if policy(Property.new).create? %>
+  <%= link_to "New Property", new_property_path, class: 'btn btn-success' %>
+<% end %>
+
 <% @properties.each do |property| %>
   <div class="media">
     <div class="media-body">

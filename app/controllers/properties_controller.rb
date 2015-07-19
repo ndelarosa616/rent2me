@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
   def index
     @properties = Property.all
+    authorize @properties
   end
 
   def show
@@ -9,11 +10,13 @@ class PropertiesController < ApplicationController
 
   def new
     @property = Property.new
+    authorize @property
   end
 
   def create
     @property = Property.new(property_params)
     @post.user = current_user
+    authorize = @property
     if @property.save
       flash[:notice] = "Property was saved."
       redirect_to @property
@@ -25,10 +28,12 @@ class PropertiesController < ApplicationController
 
   def edit
     @property = Property.find(params[:id])
+    authorize @property
   end
 
   def update
     @property = Property.find(params[:id])
+    authorize @property
     if @property.update_attributes(property_params)
       flash[:notice] = "Property was updated."
       redirect_to @property

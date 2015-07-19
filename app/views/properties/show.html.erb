@@ -1,5 +1,7 @@
 <h1><%= @property.name %></h1>
-<%= link_to "Edit", edit_property_path(@property), class: 'btn btn-success' %>
+<% if policy(@property).edit? %>
+  <%= link_to "Edit", edit_property_path(@property), class: 'btn btn-success' %>
+<% end %>
 <p><%= @property.address1 %></p>
 <p><%= @property.address2 %></p>
 <p><%= @property.address3 %></p>

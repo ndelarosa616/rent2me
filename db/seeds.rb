@@ -1,8 +1,21 @@
 require 'faker'
 
+# Create Users
+5.times do
+  user = User.new(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: Faker::Lorem.characters(10)
+  )
+  user.skip_confirmation!
+  user.save!
+end
+users = User.all
+
 # Create Properties
 50.times do
   Property.create!(
+    user: users.sample,
     name: Faker::Address.street_name,
     address1: Faker::Address.street_address,
     address2: Faker::Address.secondary_address,
@@ -32,7 +45,15 @@ properties = Property.all
 end
 tenants = Tenant.all
 
+user = User.first
+user.skip_reconfirmation!
+user.update_attributes!(
+  email: 'nicoledelarosa616@gmail.com',
+  password: 'monkey324'
+  )
+
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Property.count} properties created"
 puts "#{Tenant.count} tenants created"
 

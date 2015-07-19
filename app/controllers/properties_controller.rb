@@ -13,6 +13,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
+    @post.user = current_user
     if @property.save
       flash[:notice] = "Property was saved."
       redirect_to @property

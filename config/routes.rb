@@ -4,5 +4,11 @@ Rails.application.routes.draw do
 
   get 'about' => 'welcome#about'
 
-  root to: 'welcome#index'
+  authenticated :user do
+    root to: 'properties#index', as: :authenticated_root, via: :get
+  end
+
+  unauthenticated do
+    root to: 'welcome#index'
+  end
 end

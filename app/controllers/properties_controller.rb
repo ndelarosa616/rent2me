@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   def index
-    @properties = Property.all
+    @properties = current_user.properties
     authorize @properties
   end
 
@@ -15,7 +15,7 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-    @post.user = current_user
+    @property.user = current_user
     authorize = @property
     if @property.save
       flash[:notice] = "Property was saved."

@@ -55,3 +55,6 @@ build/
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore ds store
+db/.DS_Store

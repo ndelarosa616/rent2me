@@ -2,6 +2,7 @@
 <% if policy(@property).edit? %>
   <%= link_to "Edit", edit_property_path(@property), class: 'btn btn-success' %>
 <% end %>
+<p><%= image_tag (@property.image.show.url) if @property.image? %></p>
 <p><%= @property.address1 %></p>
 <p><%= @property.address2 %></p>
 <p><%= @property.address3 %></p>

@@ -36,6 +36,10 @@ gem 'devise'
 gem 'pundit'
 # Add figaro to store environment variables
 gem 'figaro', '1.0'
+# Add gems for image uploading
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 # Add gem for active record session store
 gem 'activerecord-session_store'

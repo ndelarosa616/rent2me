@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150719153203) do
+ActiveRecord::Schema.define(version: 20150723220431) do
 
   create_table "properties", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20150719153203) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "image"
   end
 
   add_index "properties", ["user_id"], name: "index_properties_on_user_id"

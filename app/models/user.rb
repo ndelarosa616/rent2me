@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_many :properties
 
+  before_create :set_default_role
+
   def admin?
     role == 'admin'
   end
@@ -15,5 +17,11 @@ class User < ActiveRecord::Base
 
   def tenant?
     role == 'tenant'
+  end
+
+  private
+
+  def set_default_role
+    self.role ||= 'property_manager'
   end
 end

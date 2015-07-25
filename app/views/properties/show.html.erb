@@ -1,15 +1,58 @@
-<h1><%= @property.name %></h1>
-<% if policy(@property).edit? %>
-  <%= link_to "Edit", edit_property_path(@property), class: 'btn btn-success' %>
-<% end %>
-<p><%= image_tag (@property.image.show.url) if @property.image? %></p>
-<p><%= @property.address1 %></p>
-<p><%= @property.address2 %></p>
-<p><%= @property.address3 %></p>
-<p><%= @property.country %></p>
-<p><%= @property.city %></p>
-<p><%= @property.state %></p>
-<p><%= @property.zip %></p>
-<p><%= @property.taxes %></p>
-<p><%= @property.rent %></p>
-<p><%= @property.notes %></p>
+<div class="row">
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#general" data-toggle="tab">General</a></li>
+      <li><a href="#files" data-toggle="tab">Files</a></li>
+      <li><a href="#tenants" data-toggle="tab">Tenants</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="general">
+        <h1><%= @property.name %></h1>
+        <% if policy(@property).edit? %>
+          <%= link_to "Edit", edit_property_path(@property), class: 'btn btn-success' %>
+        <% end %>
+        <p><%= image_tag (@property.image.show.url) if @property.image? %></p>
+        <p><%= @property.address1 %></p>
+        <p><%= @property.address2 %></p>
+        <p><%= @property.address3 %></p>
+        <p><%= @property.country %></p>
+        <p><%= @property.city %></p>
+        <p><%= @property.state %></p>
+        <p><%= @property.zip %></p>
+        <p><%= @property.taxes %></p>
+        <p><%= @property.rent %></p>
+        <p><%= @property.notes %></p>
+      </div>
+      <div class="tab-pane" id="files">
+        <%= form_for @property, html: { multipart: true } do |f| %>
+          <p>
+            <label>Property Files</label>
+            <br>
+            <%= f.label :file_name %>
+            <%= f.text_field :file_name %>
+            <%= f.file_field :file %>
+            <%= f.hidden_field :file_cache %>
+            <%= f.submit "Upload File", class: 'btn btn-primary' %>
+          </p>
+        <% end %>
+        <table class="table table-bordered table-striped">  <thead>
+            <tr>
+              <th>File Name</th>
+              <th>Download File</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td><%= @property.file_name %></td>
+                <td><%= link_to @property.file_name, @property.file_url %></td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tab-pane" id="tenants">
+        <p>This is where tenants for the property will show</p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -2,7 +2,7 @@
   <div class="tabbable tabs-left">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#general" data-toggle="tab">General</a></li>
-      <li><a href="#files" data-toggle="tab">Files</a></li>
+      <li><a href="#files" data-toggle="tab">Lease</a></li>
       <li><a href="#tenants" data-toggle="tab">Tenants</a></li>
     </ul>
     <div class="tab-content">
@@ -26,24 +26,20 @@
       <div class="tab-pane" id="files">
         <%= form_for @property, html: { multipart: true } do |f| %>
           <p>
-            <label>Property Files</label>
+            <label>Property Lease</label>
             <br>
-            <%= f.label :file_name %>
-            <%= f.text_field :file_name %>
             <%= f.file_field :file %>
             <%= f.hidden_field :file_cache %>
-            <%= f.submit "Upload File", class: 'btn btn-primary' %>
+            <%= f.submit "Upload Lease", class: 'btn btn-primary' %>
           </p>
         <% end %>
         <table class="table table-bordered table-striped">  <thead>
             <tr>
-              <th>File Name</th>
-              <th>Download File</th>
+              <th>Lease File</th>
             </tr>
           </thead>
           <tbody>
               <tr>
-                <td><%= @property.file_name %></td>
                 <td><%= link_to @property.file_name, @property.file_url %></td>
               </tr>
           </tbody>

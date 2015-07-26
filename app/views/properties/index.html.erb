@@ -1,15 +1,48 @@
-<h1>All Properties</h1>
-
-<% if policy(Property.new).create? %>
-  <%= link_to "New Property", new_property_path, class: 'btn btn-success' %>
-<% end %>
-
-<% @properties.each do |property| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to property.name, property %>
-      </h4>
+<div class="row">
+  <div class="tabbable tabs-left">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#properties" data-toggle="tab">Property Management</a></li>
+      <li><a href="#tenant" data-toggle="tab">Tenant Management</a></li>
+      <li><a href="#repairs" data-toggle="tab">Repair Requests</a></li>
+      <li><a href="#messages" data-toggle="tab">Messages</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="properties">
+        <h1>Properties</h1>
+        <% if policy(Property.new).create? %>
+          <%= link_to "New Property", new_property_path, class: 'btn btn-success' %>
+        <% end %>
+        <br>
+        <div class="row">
+          <div class="col-md-8">
+            <% @properties.each do |property| %>
+              <div class="media">
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    <%= link_to property.name, property %>
+                  </h4>
+                  <small>
+                    <%= image_tag (property.image.tiny.url) if property.image? %>
+                    <%= property.address1 %>
+                    <%= property.city %>,
+                    <%= property.state %>
+                    <%= property.zip %>
+                  </small>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="tenant">
+        <p>This is where the full tenant list will appear</p>
+      </div>
+      <div class="tab-pane" id="repairs">
+        <p>This is where the full repair request list will appear for all properties</p>
+      </div>
+      <div class="tab-pane" id="messages">
+        <p>This is where messaging between users will be implemented</p>
+      </div>
     </div>
   </div>
-<% end %>
+</div>

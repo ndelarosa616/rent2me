@@ -12,16 +12,16 @@
           <%= link_to "Edit", edit_property_path(@property), class: 'btn btn-success' %>
         <% end %>
         <p><%= image_tag (@property.image.show.url) if @property.image? %></p>
-        <p><%= @property.address1 %></p>
-        <p><%= @property.address2 %></p>
-        <p><%= @property.address3 %></p>
-        <p><%= @property.country %></p>
-        <p><%= @property.city %></p>
-        <p><%= @property.state %></p>
-        <p><%= @property.zip %></p>
-        <p><%= @property.taxes %></p>
-        <p><%= @property.rent %></p>
-        <p><%= @property.notes %></p>
+        <p><strong>Address 1</strong>: <%= @property.address1 %></p>
+        <p><strong>Address 2</strong>: <%= @property.address2 %></p>
+        <p><strong>Address 3</strong>: <%= @property.address3 %></p>
+        <p><strong>City</strong>: <%= @property.city %></p>
+        <p><strong>State</strong>: <%= @property.state %></p>
+        <p><strong>Zip</strong>: <%= @property.zip %></p>
+        <p><strong>Country</strong>: <%= @property.country %></p>
+        <p><strong>Taxes</strong>: <%= @property.taxes %></p>
+        <p><strong>Rent</strong>: <%= @property.rent %></p>
+        <p><strong>Notes</strong>: <%= @property.notes %></p>
       </div>
       <div class="tab-pane" id="files">
         <%= form_for @property, html: { multipart: true } do |f| %>
